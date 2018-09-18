@@ -20,10 +20,12 @@ def write_file(outfile, data):
             fw.write(f'{point}\n')
         fw.close()
 
-inputfile = 'format.txt'
-outfile = 'points.txt'
+# X, y = make_blobs(n_samples=1000, n_features=2, centers=3, center_box=(-25.0, 25.0))
 
-X, y = make_blobs(n_samples=100000, n_features=2, centers=7, center_box=(-20.0, 20.0))
-write_file(outfile, X)
-plt.scatter(X[:, 0], X[:, 1], s=2)
+# write_file('points2.txt', X)
+
+#Plot the results
+data = read_file('points2.txt')
+labels = read_file('out.txt')
+plt.scatter(data[:, 0], data[:, 1], c=labels, s=2)
 plt.show()
