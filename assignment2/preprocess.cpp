@@ -17,3 +17,14 @@ vector<vector<float> > read_file(string file) {
     }
     return data;
 }
+
+
+// TODO: Check overflow
+float distance(vector<float> &x, vector<float> &y) {
+    float sum = 0.0;
+    int d = x.size();
+    for(int i = 0; i < d; i++) {
+        sum += (x[i] - y[i]) * (x[i] - y[i]);
+    }
+    return sum;
+}

@@ -12,5 +12,6 @@
 using namespace std;
 
 vector<vector<float> > read_file(string file);
+float distance(vector<float> &x, vector<float> &y);
 
 #endif

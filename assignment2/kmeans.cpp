@@ -3,7 +3,6 @@
 
 using namespace std;
 
-float distance(vector<float> x, vector<float> y);
 vector<int> kmeans(vector<vector<float> > &data, int k);
 
 int main(int argc, char* argv[]) {
@@ -72,13 +71,4 @@ vector<int> kmeans(vector<vector<float> > &data, int k) {
     }
 
     return cluster;
-}
-
-float distance(vector<float> x, vector<float> y) {
-    float sum = 0.0;
-    int d = x.size();
-    for(int i = 0; i < d; i++) {
-        sum += (x[i] - y[i]) * (x[i] - y[i]);
-    }
-    return sum;
 }
