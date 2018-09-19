@@ -28,3 +28,12 @@ float distance(vector<float> &x, vector<float> &y) {
     }
     return sum;
 }
+
+float distance(vector<float> &x, const vector<float> &y) {
+    float sum = 0.0;
+    int d = x.size();
+    for(int i = 0; i < d; i++) {
+        sum += (x[i] - y[i]) * (x[i] - y[i]);
+    }
+    return sum;
+}

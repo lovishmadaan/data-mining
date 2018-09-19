@@ -25,7 +25,7 @@ def write_file(outfile, data):
 # write_file('points2.txt', X)
 
 #Plot the results
-data = read_file('points2.txt')
-labels = read_file('out.txt')
-plt.scatter(data[:, 0], data[:, 1], c=labels, s=2)
+data = read_file('points.txt')
+labels = read_file('out_dbscan2.txt')
+plt.scatter(data[:, 0], data[:, 1], c=labels[:, 0], s=2)
 plt.show()
