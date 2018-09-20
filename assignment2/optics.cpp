@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     optics(data, tau, eps);
     ofstream fw("out_optics.txt");
     for(int i = 0; i < n; i++) {
-        fw << reach_dist[ordering[i]]<< endl;
+        fw << reach_dist[ordering[i]] << " " << ordering[i] << endl;
     }
     return 0;
 }
