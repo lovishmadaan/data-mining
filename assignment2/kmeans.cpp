@@ -10,10 +10,6 @@ int main(int argc, char* argv[]) {
     int k = atoi(argv[2]);
     vector<vector<float> > data = read_file(file);
     int n = data.size();
-    // for(int i = 0; i < n; i++) {
-    //     for(int j = 0; j < data[i].size(); j++) cout << data[i][j] << " ";
-    //     cout << endl;
-    // }
 
     vector<int> clusters = kmeans(data, k);
     vector<vector<int> > group(k, vector<int>());
@@ -21,12 +17,6 @@ int main(int argc, char* argv[]) {
     for(int i = 0; i < n; i++) {
         group[clusters[i]].push_back(i);
     }
-
-    // ofstream fw1("test.txt");
-    // for(int i = 0; i < n; i++) {
-    //     fw1 << clusters[i] << endl;
-    // }
-    // fw1.close();
     
     ofstream fw("kmeans.txt");
     for(int i = 0; i < k; i++) {

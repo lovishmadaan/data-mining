@@ -79,7 +79,6 @@ void optics(vector<vector<float> > &data, int tau, float eps) {
         } 
         
         float core_dist = ret_matches[tau - 1].second;
-        cout << i << " " << core_dist << endl;
         set<pair<float, int> > seeds;
         update(N, i, core_dist, seeds, eps, tau);
 
