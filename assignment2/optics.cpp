@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     int n = data.size();
 
     optics(data, tau, eps);
-    ofstream fw("out_optics2.txt");
+    ofstream fw("optics.txt");
     for(int i = 0; i < n; i++) {
         if(reach_dist[ordering[i]] == -1) {
             fw << max_dist * 1.1 << " " << ordering[i] << endl;
@@ -85,7 +85,7 @@ void optics(vector<vector<float> > &data, int tau, float eps) {
         } 
         
         float core_dist = tbs[tau - 1];
-        cout << core_dist << endl;
+        // cout << core_dist << endl;
         set<pair<float, int> > seeds;
         update(N, i, core_dist, seeds, eps, tau);
 

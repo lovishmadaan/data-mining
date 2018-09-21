@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     }
     
     ofstream fw("kmeans.txt");
-    for(int i = 0; i <= cluster_val; i++) {
+    for(int i = 0; i < k; i++) {
         fw << "#" << i << endl;
         for(int j = 0; j < group[i].size(); j++) {
             fw << group[i][j] << endl;
@@ -39,7 +39,7 @@ vector<int> kmeans(vector<vector<float> > &data, int k) {
     // Initialize Means:
     srand(time(NULL));
     vector<vector<float> > centers(k);
-    for(int k = 0; k < 10; k++) {
+    for(int r = 0; r < 10; r++) {
         for(int i = 0; i < k; i++) {
             int ind = rand() % n;
             for(int j = 0; j < d; j++)
