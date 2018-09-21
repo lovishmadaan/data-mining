@@ -25,7 +25,7 @@ def read_file(inputfile):
 # write_file('points2.txt', X)
 
 #Plot the results
-data = read_file('dataset.txt')
+data = read_file('diamonds.txt')
 labels = read_file('out_dataset.txt')
 plt.scatter(data[:, 0], data[:, 1], c=labels[:, 0], s=2)
 plt.show()

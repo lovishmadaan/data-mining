@@ -31,7 +31,7 @@ def read_file(inputfile):
 # data = read_file('points.txt')
 data = read_file('out_optics2.txt')
 
-points = read_file('dataset.txt')
+points = read_file('diamonds.txt')
 
 RPlot = (data[:, 0] ** 0.5)
 RPoints = data[:, 1].astype(int)

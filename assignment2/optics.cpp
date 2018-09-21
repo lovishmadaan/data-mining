@@ -14,6 +14,8 @@ vector<bool> visited;
 vector<int> ordering;
 vector<float> reach_dist;
 
+float max_dist = 0.0;
+
 int main(int argc, char* argv[]) {
     string file = argv[1];
     int tau = atoi(argv[2]);
@@ -25,7 +27,7 @@ int main(int argc, char* argv[]) {
     ofstream fw("out_optics2.txt");
     for(int i = 0; i < n; i++) {
         if(reach_dist[ordering[i]] == -1) {
-            fw << "0.2" << " " << ordering[i] << endl;
+            fw << max_dist * 1.1 << " " << ordering[i] << endl;
         } else {
             fw << reach_dist[ordering[i]] << " " << ordering[i] << endl;
         }
@@ -49,7 +51,6 @@ void optics(vector<vector<float> > &data, int tau, float eps) {
 
     visited = vector<bool>(n, false);
     reach_dist = vector<float>(n, -1.0);
-    // int cluster_val = -1;
 
     for(int i = 0; i < n; i++) {
         if(visited[i]) {
@@ -135,6 +136,10 @@ void update(vector<int> &N, int p, float core_dist, set<pair<float, int> > &seed
 
         float dist_p_o = distance(data[p], data[o]);
         float new_reach_dist = core_dist > dist_p_o ? core_dist : dist_p_o;
+
+        if(new_reach_dist > max_dist) {
+            max+dist = new_reach_dist;
+        }
         if(reach_dist[o] == -1) {
             reach_dist[o] = new_reach_dist;
             seeds.insert(make_pair(new_reach_dist, o));

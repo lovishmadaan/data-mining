@@ -13,7 +13,7 @@ def read_file(inputfile):
 
 #Plot the results
 # data = read_file('points.txt')
-data = read_file('out_optics.txt')
+data = read_file('out_optics2.txt')
 
 der = [0]
 for i in range(1, data.shape[0]):
