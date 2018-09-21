@@ -44,6 +44,7 @@ int main(int argc, char* argv[]) {
     		fw << group[cluster_val][j] << endl;
     	}
     }
+    fw.close();
     return 0;
 }
 

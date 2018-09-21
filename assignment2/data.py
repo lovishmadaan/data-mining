@@ -26,7 +26,6 @@ def read_file(inputfile):
 
 #Plot the results
 data = read_file('final_data.txt')
-# labels = read_file('out_dataset.txt'txt)
-labels = -2 * np.ones(100000, 1)
-plt.scatter(data[:, 0], data[:, 1], c=labels[:, 0], s=2)
+labels = read_file('test.txt')
+plt.scatter(data[:, 0], data[:, 1], c=labels[:, 0], s=0.1)
 plt.show()

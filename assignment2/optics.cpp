@@ -32,6 +32,7 @@ int main(int argc, char* argv[]) {
             fw << reach_dist[ordering[i]] << " " << ordering[i] << endl;
         }
     }
+    fw.close();
     return 0;
 }
 
