@@ -51,7 +51,7 @@ vector<int> kmeans(vector<vector<float> > &data, int k) {
     }
     
     // Run kmeans
-    int iters = 200;
+    int iters = 300;
     int maxIter = iters;
     while(iters > 0) {
         // cout << maxIter + 1 - iters << endl;
