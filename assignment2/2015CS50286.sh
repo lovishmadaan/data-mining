@@ -7,5 +7,5 @@ then
     ./dbscan $4 $2 $3
 else
     ./optics $4 $2 $3
-    python id.py $4
+    python3 id.py $4
 fi
