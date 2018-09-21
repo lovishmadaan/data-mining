@@ -1,6 +1,5 @@
 #include"preprocess.h"
 #include "nanoflann.hpp"
-#include "utils.h"
 
 #include "KDTreeVectorOfVectorsAdaptor.h"
 #include<cfloat>
@@ -8,6 +7,8 @@
 
 using namespace std;
 using namespace nanoflann;
+
+int cluster_val = -1;
 
 vector<int> dbscan(vector<vector<float> > &data, int tau, float eps);
 
@@ -18,12 +19,30 @@ int main(int argc, char* argv[]) {
     vector<vector<float> > data = read_file(file);
     int n = data.size();
 
-    // cout << "read\n" << endl;
-
     vector<int> clusters = dbscan(data, tau, eps);
-    ofstream fw("out_dataset.txt");
+    vector<vector<int> > group(cluster_val + 2, vector<int>());
+
     for(int i = 0; i < n; i++) {
-        fw << clusters[i] << endl;
+    	if(clusters[i] == -2) {
+    		group[cluster_val + 1].push_back(i);
+    	} else {
+    		group[clusters[i]].push_back(i);
+    	}
+    }
+    
+    ofstream fw("dbscan.txt");
+    for(int i = 0; i <= cluster_val; i++) {
+    	fw << "#" << i << endl;
+        for(int j = 0; j < group[i].size(); j++) {
+        	fw << group[i][j] << endl;
+        }
+    }
+
+    if(group[cluster_val + 1].size() > 0) {
+    	fw << "#outlier\n";
+    	for(int j = 0; j < group[cluster_val + 1].size(); j++) {
+    		fw << group[cluster_val][j] << endl;
+    	}
     }
     return 0;
 }
@@ -41,7 +60,6 @@ vector<int> dbscan(vector<vector<float> > &data, int tau, float eps) {
 
     vector<int> cluster(n, -1);
     vector<bool> visited(n, false);
-    int cluster_val = -1;
 
     SearchParams params;
 	params.sorted = false;
@@ -50,24 +68,17 @@ vector<int> dbscan(vector<vector<float> > &data, int tau, float eps) {
         if(cluster[i] != -1) {
             continue;
         }
-
-        // cout << i << endl;
         
 		vector<pair<size_t, float> >  ret_matches;
 
 		const size_t nMatches = kdtree.index->radiusSearch(&data[i][0], eps, ret_matches, params);
 
         queue<int> ball;
-        // cout << "Index " << i << endl;
         for(int j = 0; j < ret_matches.size(); j++) {
-        	// cout << ret_matches[j].first << " " << ret_matches[j].second << endl;
             if(ret_matches[j].first != i) {
             	ball.push(ret_matches[j].first);
             }
         }
-
-        // int x;
-        // cin >> x;
 
         visited[i] = true;
         if(ball.size() < tau - 1) {
@@ -109,6 +120,5 @@ vector<int> dbscan(vector<vector<float> > &data, int tau, float eps) {
         }
     }
 
-    cout << cluster_val << endl;
     return cluster;
 }
