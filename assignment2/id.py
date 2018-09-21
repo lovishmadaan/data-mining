@@ -12,17 +12,21 @@ def read_file(inputfile):
     return data
 
 #Plot the results
-# data = read_file('points.txt')
+points = read_file('final_data.txt')
 data = read_file('out_optics2.txt')
 
-der = [0]
-for i in range(1, data.shape[0]):
-    der.append(data[i][0] - data[i - 1][0])
-der = np.array(der)
+ordering = data[:, 1].astype(int)
 
-dder = [0]
-for i in range(1, der.shape[0]):
-    dder.append(der[i] - der[i - 1])
+labels = (-2 * np.ones((100000, 1)))
+labels = labels.astype(int)
 
-plt.scatter(np.arange(data.shape[0]), data[:, 0], marker=".")
+labels[ordering[0:33001]] = 0
+labels[ordering[34490:46028]] = 1
+labels[ordering[46346:59100]] = 2
+labels[ordering[59425:79585]] = 3
+labels[ordering[79652:84345]] = 4
+labels[ordering[84530:92091]] = 5
+labels[ordering[92220:99825]] = 6
+
+plt.scatter(points[:, 0], points[:, 1], c=labels[:, 0],s=0.1)
 plt.show()

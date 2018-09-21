@@ -138,7 +138,7 @@ void update(vector<int> &N, int p, float core_dist, set<pair<float, int> > &seed
         float new_reach_dist = core_dist > dist_p_o ? core_dist : dist_p_o;
 
         if(new_reach_dist > max_dist) {
-            max+dist = new_reach_dist;
+            max_dist = new_reach_dist;
         }
         if(reach_dist[o] == -1) {
             reach_dist[o] = new_reach_dist;
