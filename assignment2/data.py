@@ -12,20 +12,20 @@ def read_file(inputfile):
     data = np.array(data)
     return data
 
-def write_file(outfile, data):
-    with open(outfile, 'w') as fw:
-        for point in data:
-            point = list(map(str, point))
-            point = (' ').join(point)
-            fw.write(f'{point}\n')
-        fw.close()
+# def write_file(outfile, data):
+#     with open(outfile, 'w') as fw:
+#         for point in data:
+#             point = list(map(str, point))
+#             point = (' ').join(point)
+#             fw.write(f'{point}\n')
+#         fw.close()
 
 # X, y = make_blobs(n_samples=1000, n_features=2, centers=3, center_box=(-25.0, 25.0))
 
 # write_file('points2.txt', X)
 
 #Plot the results
-data = read_file('points.txt')
-labels = read_file('out_dbscan2.txt')
+data = read_file('dataset.txt')
+labels = read_file('out_dataset.txt')
 plt.scatter(data[:, 0], data[:, 1], c=labels[:, 0], s=2)
 plt.show()

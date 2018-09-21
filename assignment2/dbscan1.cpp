@@ -65,7 +65,7 @@ vector<int> dbscan(vector<vector<float> > &data, int tau, float eps) {
         }
 
         visited[i] = true;
-        if(ball.size() < tau) {
+        if(ball.size() < tau - 1) {
             cluster[i] = -2;
         } else {
             cluster_val++;
@@ -95,7 +95,7 @@ vector<int> dbscan(vector<vector<float> > &data, int tau, float eps) {
 
                     cluster[p] = cluster_val;
 
-                    if(temp_ball.size() >= tau) { // Core point
+                    if(temp_ball.size() > tau) { // Core point
                         for(int k = 0; k < temp_ball.size(); k++) {
                         	if(!visited[temp_ball[k]]) {
                         		ball.push(temp_ball[k]);

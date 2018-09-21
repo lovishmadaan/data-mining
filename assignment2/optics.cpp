@@ -22,9 +22,13 @@ int main(int argc, char* argv[]) {
     int n = data.size();
 
     optics(data, tau, eps);
-    ofstream fw("out_optics.txt");
+    ofstream fw("out_optics2.txt");
     for(int i = 0; i < n; i++) {
-        fw << reach_dist[ordering[i]] << " " << ordering[i] << endl;
+        if(reach_dist[ordering[i]] == -1) {
+            fw << "0.2" << " " << ordering[i] << endl;
+        } else {
+            fw << reach_dist[ordering[i]] << " " << ordering[i] << endl;
+        }
     }
     return 0;
 }
