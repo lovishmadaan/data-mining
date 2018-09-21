@@ -41,7 +41,7 @@ int main(int argc, char* argv[]) {
     if(group[cluster_val + 1].size() > 0) {
     	fw << "#outlier\n";
     	for(int j = 0; j < group[cluster_val + 1].size(); j++) {
-    		fw << group[cluster_val][j] << endl;
+    		fw << group[cluster_val + 1][j] << endl;
     	}
     }
     fw.close();
