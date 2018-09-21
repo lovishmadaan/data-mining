@@ -16,11 +16,19 @@ int main(int argc, char* argv[]) {
     // }
 
     vector<int> clusters = kmeans(data, k);
-    ofstream fw("out.txt");
+    vector<vector<int> > group(k, vector<int>());
+
     for(int i = 0; i < n; i++) {
-        fw << clusters[i] << endl;
+        group[clusters[i]].push_back(i);
     }
-    return 0;
+    
+    ofstream fw("kmeans.txt");
+    for(int i = 0; i <= cluster_val; i++) {
+        fw << "#" << i << endl;
+        for(int j = 0; j < group[i].size(); j++) {
+            fw << group[i][j] << endl;
+        }
+    }
 }
 
 vector<int> kmeans(vector<vector<float> > &data, int k) {
@@ -31,10 +39,18 @@ vector<int> kmeans(vector<vector<float> > &data, int k) {
     // Initialize Means:
     srand(time(NULL));
     vector<vector<float> > centers(k);
+    for(int k = 0; k < 10; k++) {
+        for(int i = 0; i < k; i++) {
+            int ind = rand() % n;
+            for(int j = 0; j < d; j++)
+                centers[i][j] += data[ind][j];
+        }
+    }
+
     for(int i = 0; i < k; i++) {
         int ind = rand() % n;
-        // cout << ind << " is " << i << " center" << endl;
-        centers[i] = data[ind];
+        for(int j = 0; j < d; j++)
+            centers[i][j] /= 10;
     }
 
     // Run kmeans

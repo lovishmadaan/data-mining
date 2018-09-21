@@ -18,7 +18,6 @@ vector<vector<float> > read_file(string file) {
     return data;
 }
 
-
 // TODO: Check overflow
 float distance(vector<float> &x, vector<float> &y) {
     float sum = 0.0;
