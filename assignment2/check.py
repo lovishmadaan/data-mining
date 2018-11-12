@@ -41,3 +41,4 @@ def read_file2(inputfile, points):
     plt.show()
 
 read_file2('dbscan.txt', points)
+

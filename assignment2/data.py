@@ -26,6 +26,6 @@ def read_file(inputfile):
 
 #Plot the results
 data = read_file('final_data.txt')
-labels = read_file('test.txt')
+labels = read_file('kmeans.txt')
 plt.scatter(data[:, 0], data[:, 1], c=labels[:, 0], s=0.1)
 plt.show()
