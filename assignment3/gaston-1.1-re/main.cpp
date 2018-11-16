@@ -9,7 +9,6 @@
 #include "simplesubiso.h"
 #include <time.h>
 #include <getopt.h>
-
 using namespace std;
 
 Frequency minfreq = 1;

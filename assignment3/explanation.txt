@@ -1,0 +1,5 @@
+Explanation for Plots:
+• Time taken exponentially decreases as support value increases because the number of frequent subgraphs decreases exponentially with increase in support value.
+• gspan and gaston are faster than FSG because FSG employs Apriori based approach(BFS strategy) whereas gspan and gaston employ pattern growth approach(DFS based). DFS strategy expands the patterns that already exist in the dataset.
+• When the support threshold is low, gspan has to carry out a lot of subgraph isomorphism tests leading to slower performance than FSG.
+• Gaston is faster than gspan because frequency counting process for gaston is carried out with the help of embedding lists, which helps in fast isomorphism testing.
